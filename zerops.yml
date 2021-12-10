@@ -4,7 +4,9 @@ gui:
     build:
       - npm i
       - npm run build monorepoonzerops
-    deploy: [ './dist/apps/monorepoonzerops' ]
+    deploy:
+      - ./dist/apps/monorepoonzerops
+    cache: [ node_modules ]
 
 api:
   build:
@@ -12,7 +14,11 @@ api:
     build:
       - npm i
       - npm run build api
-    deploy: [ './dist/apps/api/~' ]
+    deploy:
+      - ./dist/apps/api
+      - node_modules
+      - package.json
+    cache: [ node_modules ]
   run:
-    start: node main.js
+    start: node dist/apps/api/main.js
 
