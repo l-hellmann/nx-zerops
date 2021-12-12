@@ -8,6 +8,6 @@ import { Message } from '@monorepoonzerops/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
+  hello$ = this.http.get<Message>('https://api-8-3333-demo.devel.zerops.io/api/hello');
   constructor(private http: HttpClient) {}
 }

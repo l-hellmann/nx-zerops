@@ -6,7 +6,9 @@ gui:
       - npm run build monorepoonzerops
     deploy:
       - ./dist/apps/monorepoonzerops
-    cache: [ node_modules ]
+    # cache: [ node_modules ]
+  run:
+    start: echo 'hi'
 
 api:
   build:
@@ -18,7 +20,9 @@ api:
       - ./dist/apps/api
       - node_modules
       - package.json
-    cache: [ node_modules ]
+    # cache: [ node_modules ]
   run:
+    # prepare:
+    #   - touch foo.txt
     start: node dist/apps/api/main.js
 
