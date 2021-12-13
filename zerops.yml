@@ -18,7 +18,7 @@ api:
 
     base: [ nodejs@14 ]
     prepare: 
-      - @'[ -f "/preapre" ] && cat /prepare'
+      - '[ -f "/preapre" ] && cat /prepare'
       - echo $(date) > /prepare
     
     build:
@@ -39,4 +39,4 @@ api:
       - echo $(date) > /prepare
   
     start: npm run start
-#adwqe
+#adwqew
