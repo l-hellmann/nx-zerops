@@ -1,28 +1,42 @@
-gui:
-  build:
-    base: [ nodejs@14 ]
-    build:
-      - npm i
-      - npm run build monorepoonzerops
-    deploy:
-      - ./dist/apps/monorepoonzerops
-    # cache: [ node_modules ]
-  run:
-    start: echo 'hi'
+# gui:
+#   build:
+#     base: [ nodejs@14 ]
+#     prepare: 
+#       - [ -f "/preapre" ] && cat /prepare fi
+#       - echo $(date) > /prepare
+#     build:
+#       - npm i
+#       - npm run build monorepoonzerops
+#     deploy:
+#       - ./dist/apps/monorepoonzerops
+#     cache: [ node_modules ]
+#   run:
+#     start: echo 'hi'
 
 api:
   build:
+
     base: [ nodejs@14 ]
+    prepare: 
+      - [ -f "/preapre" ] && cat /prepare
+      - echo $(date) > /prepare
+    
     build:
       - npm i
       - npm run build api
+    
     deploy:
       - ./dist/apps/api
       - node_modules
       - package.json
-    # cache: [ node_modules ]
+    
+    cache: [ node_modules ]
+
   run:
-    # prepare:
-    #   - touch foo.txt
-    start: node dist/apps/api/main.js
+
+    prepare:
+      - [ -f "/preapre" ] && cat /prepare fi
+      - echo $(date) > /prepare
+  
+    start: npm run start
 
