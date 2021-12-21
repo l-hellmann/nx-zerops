@@ -17,26 +17,28 @@ api:
   build:
 
     base: [ nodejs@14 ]
-    prepare: 
-      - echo $(date) > /prepare
-    
+    prepare:
+      - npm config set unsafe-perm true
+      - npm i -g @nestjs/cli
+      - npm i -g @zerops/zcli
+
     build:
-      - npm i
-      - npm run build api
-    
+      - nest --help
+      - npm i --loglevel=error
+      - npm run build api --loglevel=error
     deploy:
       - ./dist/apps/api
       - node_modules
       - package.json
-    
     cache: [ node_modules ]
-
   run:
-
     prepare:
-      - echo $(date) > /prepare
-  
-    start: npm run start
+      - npm config set unsafe-perm true
+      - npm i -g @zerops/zcli
+    init:
+      - echo "init"
+      - zcli --help
+    start: node dist/apps/api/main.js
 
 
 #a
